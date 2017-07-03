@@ -9,7 +9,7 @@
   <backgrounds name="background"/>
   <paths name="paths"/>
   <objects name="objects">
-    <object>objects\obj_inv</object>
+    <object>objects\obj_gui</object>
     <object>objects\obj_listener</object>
   </objects>
   <rooms name="rooms">
