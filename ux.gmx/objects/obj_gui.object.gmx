@@ -84,7 +84,38 @@ contcharTargetY2=view_hview[0];
 colPrimary=make_color_rgb(000,127,255)
 colBorder=make_color_rgb(000,056,112)
 colSecondary=make_color_rgb(109,124,255)
-colSelected=make_color_rgb(000,127,255)
+colSelected=make_color_rgb(081,255,255)
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Main Arrays
+pausedMenu[0,0]="Hello"
+pausedMenu[1,0]="World!"
+pausedMenu[2,0]="Test1"
+pausedMenu[3,0]="Test2"
+pausedMenu[4,0]="Test3"
+pausedMenu[5,0]="Test4"
+pausedMenu[6,0]="Test5"
+
+// Main Vars
+selectionPaused = 0;
 </string>
           </argument>
         </arguments>
@@ -144,20 +175,75 @@ draw_rectangle_colour(
           <argument>
             <kind>1</kind>
             <string>/// Starting someshit or something
+scr_menuContainers();
 //Drawing main
-
-draw_set_colour(c_red);
 draw_rectangle_colour(
     contMainX,
     contMainY,
     contMainX2,
     contMainY2,
-    c_aqua,
-    c_aqua,
-    c_blue,
-    c_blue,
+    colPrimary,
+    colPrimary,
+    colSecondary,
+    colSecondary,
     false
     );
+
+
+// Drawing primary pause menu container
+draw_rectangle_colour(
+    contPauseX,
+    contPauseY,
+    contPauseX2,
+    contPauseY2,
+    colPrimary,
+    colPrimary,
+    colPrimary,
+    colPrimary,
+    false
+    );
+// For loop to make buttons
+draw_set_font(font_Main);
+for (i=0; i&lt;array_height_2d(pausedMenu); i+=1)
+    {
+    buttonY = ((i * (string_height(pausedMenu[i,0]) + ((contPauseY2 - contPauseY) * .01))) + 1 );
+    buttonH = ((i + 1) * (string_height(pausedMenu[i,0]) + ((contPauseY2 - contPauseY) * .01)));
+    draw_set_color(colPrimary);
+    if (i == selectionPaused)
+        {
+        draw_set_colour(colSelected);
+        draw_rectangle(contPauseX,buttonY,contPauseX2,buttonH,false);
+        draw_set_color(c_black);
+        draw_set_halign(fa_center);
+        draw_set_valign(fa_middle);
+        draw_text((contPauseX2 - contPauseX) / 2,( buttonY + ((buttonH-buttonY) / 2)),pausedMenu[i,0])
+        draw_set_color(c_gray);
+        draw_line(contPauseX,buttonH,contPauseX2,buttonH);
+        }
+    else
+        {
+        draw_set_color(colPrimary);
+        draw_rectangle(contPauseX,buttonY,contPauseX2,buttonH,false);
+        draw_set_color(c_black);
+        draw_set_halign(fa_center);
+        draw_set_valign(fa_middle);
+        draw_text((contPauseX2 - contPauseX) / 2,( buttonY + ((buttonH-buttonY) / 2)),pausedMenu[i,0])
+        draw_set_color(c_gray);
+        draw_line(contPauseX,buttonH,contPauseX2,buttonH);
+        }
+    };
+draw_set_color(colBorder)
+draw_rectangle( // Drawing Border
+    contPauseX,
+    contPauseY,
+    contPauseX2,
+    contPauseY2,
+    true
+    );
+
+    
+    
+
 
 </string>
           </argument>

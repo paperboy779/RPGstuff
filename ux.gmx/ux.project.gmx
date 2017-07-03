@@ -8,6 +8,12 @@
   <sprites name="sprites"/>
   <backgrounds name="background"/>
   <paths name="paths"/>
+  <scripts name="scripts">
+    <script>scripts\scr_menuContainers.gml</script>
+  </scripts>
+  <fonts name="fonts">
+    <font>fonts\font_Main</font>
+  </fonts>
   <objects name="objects">
     <object>objects\obj_gui</object>
     <object>objects\obj_listener</object>
