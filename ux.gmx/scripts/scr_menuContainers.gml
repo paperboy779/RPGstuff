@@ -57,4 +57,4 @@ contcharTargetY2=view_hview[0];
 colPrimary=make_color_rgb(000,127,255)
 colBorder=make_color_rgb(000,056,112)
 colSecondary=make_color_rgb(109,124,255)
-colSelected=make_color_rgb(081,255,255)
+colSelected=make_color_rgb(109,204,255)

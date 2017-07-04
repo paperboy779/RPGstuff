@@ -11,81 +11,41 @@
     <event eventtype="0" enumb="0">
       <action>
         <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
+        <id>601</id>
+        <kind>0</kind>
         <userelative>0</userelative>
         <isquestion>0</isquestion>
         <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
+        <exetype>1</exetype>
+        <functionname>action_execute_script</functionname>
         <codestring></codestring>
         <whoName>self</whoName>
         <relative>0</relative>
         <isnot>0</isnot>
         <arguments>
           <argument>
-            <kind>1</kind>
-            <string>/// Create Gui
-
-//Container Percentages
-width25=view_wview[0]*.25;
-width50=view_wview[0]*.50;
-width75=view_wview[0]*.75;
-
-height25=view_hview[0]*.25;
-height50=view_hview[0]*.50;
-height75=view_hview[0]*.75;
-
-//Pause Container
-contPauseX=0;
-contPauseY=0;
-contPauseX2=contPauseX+width25;
-contPauseY2=contPauseY + view_hview[0];
-
-contPauseTargetX=0;
-contPauseTargetY=0;
-contPauseTargetX2=contPauseX+width25;
-contPauseTargetY2=contPauseY + view_hview[0];
-
-// Main Container percentages
-contMainX=view_xview[0];
-contMainY=view_yview[0];
-contMainX2=view_wview[0];
-contMainY2=view_hview[0];
-
-contMainTargetX=0;
-contMainTargetY=0;
-contMainTargetX2=view_wview[0];
-contMainTargetY2=view_hview[0];
-
-// Options Menu
-contoptionsX=contMainX2+1;
-contoptionsY=0;
-contoptionsX2=view_wview[0];
-contoptionsY2=view_hview[0];
-
-contoptionsTargetX=0;
-contoptionsTargetY=0;
-contoptionsTargetX2=view_wview[0];
-contoptionsTargetY2=view_hview[0];
-
-// Character Menus
-contcharX=contMainX2+1;
-contcharY=0;
-contcharX2=view_wview[0];
-contcharY2=view_hview[0];
-
-contcharTargetX=0;
-contcharTargetY=0;
-contcharTargetX2=view_wview[0];
-contcharTargetY2=view_hview[0];
-
-//Colors
-colPrimary=make_color_rgb(000,127,255)
-colBorder=make_color_rgb(000,056,112)
-colSecondary=make_color_rgb(109,124,255)
-colSelected=make_color_rgb(081,255,255)
-</string>
+            <kind>9</kind>
+            <script>scr_menuContainers</script>
+          </argument>
+          <argument>
+            <kind>0</kind>
+            <string></string>
+          </argument>
+          <argument>
+            <kind>0</kind>
+            <string></string>
+          </argument>
+          <argument>
+            <kind>0</kind>
+            <string></string>
+          </argument>
+          <argument>
+            <kind>0</kind>
+            <string></string>
+          </argument>
+          <argument>
+            <kind>0</kind>
+            <string></string>
           </argument>
         </arguments>
       </action>
@@ -114,45 +74,63 @@ pausedMenu[4,0]="Test3"
 pausedMenu[5,0]="Test4"
 pausedMenu[6,0]="Test5"
 
+
+keyboard_set_map(ord("W"), vk_up)
+keyboard_set_map(ord("S"), vk_down)
+kbUp = keyboard_check_pressed(vk_up)
+kbDown = keyboard_check_pressed(vk_down)
+
+
 // Main Vars
-selectionPaused = 0;
+//selectionPaused = 5;
+//selectionActive = 0; // 0 = Main Paused
+selectionActive = 0;
+selectionArray[0,0] = 0;
+selectionArray[0,1] = pausedMenu;
+
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="8" enumb="64">
+    <event eventtype="3" enumb="0">
       <action>
         <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
+        <id>601</id>
+        <kind>0</kind>
         <userelative>0</userelative>
         <isquestion>0</isquestion>
         <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
+        <exetype>1</exetype>
+        <functionname>action_execute_script</functionname>
         <codestring></codestring>
         <whoName>self</whoName>
         <relative>0</relative>
         <isnot>0</isnot>
         <arguments>
           <argument>
-            <kind>1</kind>
-            <string>/// Starting someshit or something
-//Drawing main
-draw_set_colour(colBorder);
-draw_rectangle_colour(
-    contMainX,
-    contMainY,
-    contMainX2,
-    contMainY2,
-    c_aqua,
-    c_aqua,
-    c_blue,
-    c_blue,
-    true
-);
-</string>
+            <kind>9</kind>
+            <script>scr_movingSelection</script>
+          </argument>
+          <argument>
+            <kind>0</kind>
+            <string></string>
+          </argument>
+          <argument>
+            <kind>0</kind>
+            <string></string>
+          </argument>
+          <argument>
+            <kind>0</kind>
+            <string></string>
+          </argument>
+          <argument>
+            <kind>0</kind>
+            <string></string>
+          </argument>
+          <argument>
+            <kind>0</kind>
+            <string></string>
           </argument>
         </arguments>
       </action>
@@ -209,7 +187,7 @@ for (i=0; i&lt;array_height_2d(pausedMenu); i+=1)
     buttonY = ((i * (string_height(pausedMenu[i,0]) + ((contPauseY2 - contPauseY) * .01))) + 1 );
     buttonH = ((i + 1) * (string_height(pausedMenu[i,0]) + ((contPauseY2 - contPauseY) * .01)));
     draw_set_color(colPrimary);
-    if (i == selectionPaused)
+    if (i == selectionArray[selectionActive,0])
         {
         draw_set_colour(colSelected);
         draw_rectangle(contPauseX,buttonY,contPauseX2,buttonH,false);
@@ -218,7 +196,7 @@ for (i=0; i&lt;array_height_2d(pausedMenu); i+=1)
         draw_set_valign(fa_middle);
         draw_text((contPauseX2 - contPauseX) / 2,( buttonY + ((buttonH-buttonY) / 2)),pausedMenu[i,0])
         draw_set_color(c_gray);
-        draw_line(contPauseX,buttonH,contPauseX2,buttonH);
+        draw_line_width(contPauseX,buttonH-1,contPauseX2,buttonH-1,4);
         }
     else
         {
@@ -229,7 +207,19 @@ for (i=0; i&lt;array_height_2d(pausedMenu); i+=1)
         draw_set_valign(fa_middle);
         draw_text((contPauseX2 - contPauseX) / 2,( buttonY + ((buttonH-buttonY) / 2)),pausedMenu[i,0])
         draw_set_color(c_gray);
-        draw_line(contPauseX,buttonH,contPauseX2,buttonH);
+        draw_line_width(contPauseX,buttonH-1,contPauseX2,buttonH-1,4);
+        // Checking if mouse is within bounds to make new selection
+        if
+            (
+            mouse_x &gt; contPauseX &amp;&amp;
+            mouse_x &lt; contPauseX2 &amp;&amp;
+            mouse_y &gt; buttonY &amp;&amp;
+            mouse_y &lt; buttonH &amp;&amp;
+            selectionActive == 0
+            )
+            {
+            selectionArray[selectionActive,0] = i;
+            }
         }
     };
 draw_set_color(colBorder)
@@ -243,7 +233,7 @@ draw_rectangle( // Drawing Border
 
     
     
-
+draw_text(500,500,selectionArray[selectionActive,0])
 
 </string>
           </argument>
