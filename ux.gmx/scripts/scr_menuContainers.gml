@@ -32,26 +32,26 @@ contMainTargetX2=view_wview[0];
 contMainTargetY2=view_hview[0];
 
 // Options Menu
-contoptionsX=contMainX2+1;
-contoptionsY=0;
-contoptionsX2=view_wview[0];
-contoptionsY2=view_hview[0];
+contOptionsX=contMainX2+1;
+contOptionsY=0;
+contOptionsX2=view_wview[0];
+contOptionsY2=view_hview[0];
 
-contoptionsTargetX=0;
-contoptionsTargetY=0;
-contoptionsTargetX2=view_wview[0];
-contoptionsTargetY2=view_hview[0];
+contOptionsTargetX=0;
+contOptionsTargetY=0;
+contOptionsTargetX2=view_wview[0];
+contOptionsTargetY2=view_hview[0];
 
 // Character Menus
-contcharX=contMainX2+1;
-contcharY=0;
-contcharX2=view_wview[0];
-contcharY2=view_hview[0];
+contCharX=contMainX2+1;
+contCharY=0;
+contCharX2=view_wview[0];
+contCharY2=view_hview[0];
 
-contcharTargetX=0;
-contcharTargetY=0;
-contcharTargetX2=view_wview[0];
-contcharTargetY2=view_hview[0];
+contCharTargetX=0;
+contCharTargetY=0;
+contCharTargetX2=view_wview[0];
+contCharTargetY2=view_hview[0];
 
 //Colors
 colPrimary=make_color_rgb(000,127,255)
